@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import Logo from "./Logo";
 import defaultTheme from "@/themes/defaultTheme";
 
@@ -34,7 +34,7 @@ const RightContainer = styled.div`
   p {
     margin-right: 28px;
     font-size: 14px;
-    color: rgba(0, 0, 0, 0.65);
+    color: ${theme.black65};
   }
 `;
 
@@ -46,6 +46,7 @@ const Wrapper = styled.header`
   align-items: center;
   background-color: ${theme.grey1};
   font-family: ${theme.font1};
+  border-bottom: solid ${theme.grey3} 1px;
 `;
 
 export default Header;

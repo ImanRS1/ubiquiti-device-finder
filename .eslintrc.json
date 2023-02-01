@@ -1,3 +1,7 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "ignorePatterns": ["temp.js", "**/vendor/*.js"],
+  "rules": {
+    "@next/next/no-img-element": 0
+  }
 }
