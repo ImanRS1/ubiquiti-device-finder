@@ -1,6 +1,10 @@
 @import "./normalize.css";
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 
+html {
+  background-color: #FFFFFF;
+}
+
 button {
   border: none;
   background: transparent;
