@@ -4,12 +4,12 @@ import defaultTheme from "@/themes/defaultTheme";
 
 const theme = defaultTheme();
 
-const SearchBar = () => {
+const NavBar = () => {
   return (
     <Wrapper>
       <SearchField>
         <form className="search">
-          <button type="submit">
+          <button type="submit" className="search-button">
             <img src="./icons/search-icon.svg" alt="A search icon" />
           </button>
           <input type="text" placeholder="Search" />
@@ -18,9 +18,34 @@ const SearchBar = () => {
           </button>
         </form>
       </SearchField>
+      <Options>
+        <button>
+          <img src="./icons/list-active-icon.svg" alt="List display symbol" />
+        </button>
+        <button>
+          <img
+            src="./icons/grid-notactive-icon.svg"
+            alt="Grid display symbol"
+          />
+        </button>
+        <button className="filter-button">Filter</button>
+      </Options>
     </Wrapper>
   );
 };
+
+const Options = styled.div`
+  width: 105px;
+  height: 32px;
+  margin-right: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .filter-button {
+    color: ${theme.black45};
+  }
+`;
 
 const SearchField = styled.div`
   width: 344px;
@@ -28,13 +53,16 @@ const SearchField = styled.div`
   background-color: ${theme.grey1};
   border-radius: 4px;
   margin-left: 30px;
-  padding: 6px 8px;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: ${theme.font1};
 
+  overflow: hidden;
+
+  .search-button {
+    padding-right: 2px;
+  }
   form {
     display: flex;
     align-items: center;
@@ -44,12 +72,18 @@ const SearchField = styled.div`
   button {
     display: flex;
     align-items: center;
+    padding: 6px 8px;
+    &:hover {
+      background-color: ${theme.grey3};
+      cursor: pointer;
+    }
   }
 
   input[type="text"] {
     flex-grow: 1;
     color: ${theme.black85};
     font-size: 24;
+    caret-color: ${theme.blue1};
 
     &:focus {
       outline: none;
@@ -68,6 +102,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-family: ${theme.font1};
 `;
 
-export default SearchBar;
+export default NavBar;

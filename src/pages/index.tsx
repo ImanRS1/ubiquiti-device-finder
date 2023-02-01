@@ -1,11 +1,11 @@
 import Header from "@/components/Header";
-import SearchBar from "@/components/SearchBar";
+import NavBar from "@/components/NavBar";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <SearchBar />
+      <NavBar />
     </>
   );
 }
