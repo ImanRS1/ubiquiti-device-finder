@@ -6,8 +6,6 @@ import defaultTheme from "@/themes/defaultTheme";
 const theme = defaultTheme();
 
 const Header = () => {
-  console.log(theme);
-
   return (
     <Wrapper>
       <LeftContainer>
@@ -23,18 +21,31 @@ const Header = () => {
 
 const LeftContainer = styled.div`
   display: flex;
+  align-items: center;
+  p {
+    margin-left: 16px;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    color: ${theme.grey2};
+  }
 `;
 
-const RightContainer = styled.div``;
+const RightContainer = styled.div`
+  p {
+    margin-right: 28px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.65);
+  }
+`;
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
   width: 100vw;
   height: 56px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: ${theme.grey1};
   font-family: ${theme.font1};
-  color: ${theme.grey2};
 `;
 
 export default Header;
