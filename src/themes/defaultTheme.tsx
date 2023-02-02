@@ -4,6 +4,8 @@ export default function defaultTheme() {
     grey2: "#838691",
     grey3: "#EDEDF0",
     grey4: "#BDBDBD",
+    grey5: "#FBFBFB",
+    grey6: "#DBDCE1",
     font1: "Lato",
     black45: "rgba(0, 0, 0, 0.45)",
     black65: "rgba(0, 0, 0, 0.65)",

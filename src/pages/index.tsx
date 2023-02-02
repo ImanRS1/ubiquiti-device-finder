@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import NavBar from "@/components/NavBar";
 import ProductsList from "@/components/ProductsList";
+import ProductsGrid from "@/components/ProductsGrid";
 import styled from "styled-components";
 
 export default function Home() {
@@ -8,7 +9,8 @@ export default function Home() {
     <Wrapper>
       <Header />
       <NavBar />
-      <ProductsList />
+      <ProductsGrid />
+      {/* <ProductsList /> */}
     </Wrapper>
   );
 }

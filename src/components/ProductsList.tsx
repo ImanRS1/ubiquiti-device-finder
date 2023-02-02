@@ -102,6 +102,11 @@ const ProductRow = styled.div`
   display: flex;
   height: 33px;
   border-bottom: solid ${theme.grey3} 1px;
+
+  &:hover {
+    background-color: ${theme.grey5};
+    cursor: pointer;
+  }
 `;
 
 const TitleRow = styled.div`
