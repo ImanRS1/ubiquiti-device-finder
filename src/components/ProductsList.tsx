@@ -35,23 +35,36 @@ const ProductsList = () => {
       </TitleRow>
       {Product(
         "06a25b40-ef1f-463a-82d9-13236866ea3d",
-        "uniFi",
+        "UniFi",
         "Access Point WiFi 6 In-wall"
+      )}
+      {Product("0d482159-5482-4cf7-b8ab-cfd1c798bab9", "airMAX", "airCube AC")}
+      {Product(
+        "fe65d707-1bdb-46a3-b79b-bd600150226e",
+        "UniFi LTE",
+        "UniFi LTE"
       )}
       {Product(
         "06a25b40-ef1f-463a-82d9-13236866ea3d",
-        "uniFi",
+        "UniFi",
         "Access Point WiFi 6 In-wall"
+      )}
+      {Product("0d482159-5482-4cf7-b8ab-cfd1c798bab9", "airMAX", "airCube AC")}
+      {Product(
+        "fe65d707-1bdb-46a3-b79b-bd600150226e",
+        "UniFi LTE",
+        "UniFi LTE"
       )}
       {Product(
         "06a25b40-ef1f-463a-82d9-13236866ea3d",
-        "uniFi",
+        "UniFi",
         "Access Point WiFi 6 In-wall"
       )}
+      {Product("0d482159-5482-4cf7-b8ab-cfd1c798bab9", "airMAX", "airCube AC")}
       {Product(
-        "06a25b40-ef1f-463a-82d9-13236866ea3d",
-        "uniFi",
-        "Access Point WiFi 6 In-wall"
+        "fe65d707-1bdb-46a3-b79b-bd600150226e",
+        "UniFi LTE",
+        "UniFi LTE"
       )}
     </Wrapper>
   );

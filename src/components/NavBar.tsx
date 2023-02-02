@@ -1,10 +1,17 @@
-import React from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 import defaultTheme from "@/themes/defaultTheme";
+import { ListViewContext } from "@/context/ListViewContext";
 
 const theme = defaultTheme();
 
 const NavBar = () => {
+  const listViewContext = useContext(ListViewContext);
+
+  const handleClick = (active: boolean) => {
+    listViewContext.setListView(active);
+  };
+
   return (
     <Wrapper>
       <SearchField>
@@ -19,14 +26,25 @@ const NavBar = () => {
         </form>
       </SearchField>
       <Options>
-        <button>
-          <img src="./icons/list-active-icon.svg" alt="List display symbol" />
+        <button onClick={() => handleClick(true)}>
+          {listViewContext.listView ? (
+            <img src="./icons/list-active-icon.svg" alt="List display symbol" />
+          ) : (
+            <img
+              src="./icons/list-notactive-icon.svg"
+              alt="List display symbol"
+            />
+          )}
         </button>
-        <button>
-          <img
-            src="./icons/grid-notactive-icon.svg"
-            alt="Grid display symbol"
-          />
+        <button onClick={() => handleClick(false)}>
+          {listViewContext.listView ? (
+            <img
+              src="./icons/grid-notactive-icon.svg"
+              alt="Grid display symbol"
+            />
+          ) : (
+            <img src="./icons/grid-active-icon.svg" alt="Grid display symbol" />
+          )}
         </button>
         <button className="filter-button">Filter</button>
       </Options>

@@ -3,14 +3,17 @@ import NavBar from "@/components/NavBar";
 import ProductsList from "@/components/ProductsList";
 import ProductsGrid from "@/components/ProductsGrid";
 import styled from "styled-components";
+import { ListViewContext } from "@/context/ListViewContext";
+import { useContext } from "react";
 
 export default function Home() {
+  const listViewContext = useContext(ListViewContext);
   return (
     <Wrapper>
       <Header />
       <NavBar />
-      <ProductsGrid />
-      {/* <ProductsList /> */}
+
+      {listViewContext.listView ? <ProductsList /> : <ProductsGrid />}
     </Wrapper>
   );
 }
