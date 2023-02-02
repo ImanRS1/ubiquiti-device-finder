@@ -12,7 +12,6 @@ export default function Home() {
     <Wrapper>
       <Header />
       <NavBar />
-
       {listViewContext.listView ? <ProductsList /> : <ProductsGrid />}
     </Wrapper>
   );
