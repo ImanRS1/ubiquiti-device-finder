@@ -6,6 +6,7 @@ interface GlobalState {
   filterWindow: boolean;
   setFilterWindow: Dispatch<SetStateAction<boolean>>;
   filterOptions: string[];
+  setFilterOptions: Dispatch<SetStateAction<Array<string>>>;
 }
 
 export const GlobalState = createContext({} as GlobalState);

@@ -6,7 +6,7 @@ import { GlobalState } from "@/context/GlobalState";
 export default function App({ Component, pageProps }: AppProps) {
   const [listView, setListView] = useState(true);
   const [filterWindow, setFilterWindow] = useState(false);
-  const filterOptions = [""];
+  const [filterOptions, setFilterOptions] = useState([""]);
 
   return (
     <GlobalState.Provider
@@ -16,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
         filterWindow,
         setFilterWindow,
         filterOptions,
+        setFilterOptions,
       }}
     >
       <Component {...pageProps} />

@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 import defaultTheme from "@/themes/defaultTheme";
 import { GlobalState } from "@/context/GlobalState";
@@ -10,9 +10,38 @@ interface filterProps {
 }
 
 const FilterOption = (props: filterProps) => {
+  const globalState = useContext(GlobalState);
+  const { filterOptions, setFilterOptions } = globalState;
+
+  const handleClick = (productline: string) => {
+    if (filterOptions.includes(productline)) {
+      setFilterOptions(
+        filterOptions.filter((option) => option !== productline)
+      );
+      return;
+    }
+    filterOptions.push(productline);
+  };
+
   return (
     <FilterOptionWrapper>
-      <input type="checkbox" className="check_box" id={props.productline} />
+      {filterOptions.includes(props.productline) ? (
+        <input
+          type="checkbox"
+          className="check_box"
+          defaultChecked
+          id={props.productline}
+          onClick={() => handleClick(props.productline)}
+        />
+      ) : (
+        <input
+          type="checkbox"
+          className="check_box"
+          id={props.productline}
+          onClick={() => handleClick(props.productline)}
+        />
+      )}
+
       <label htmlFor={props.productline}>
         <div className="product-text">{props.productline}</div>
       </label>
@@ -36,6 +65,7 @@ const FilterOptionWrapper = styled.div`
     width: 16px;
     display: inline-block;
     padding: 0 0 0 0px;
+    cursor: pointer;
   }
 
   .check_box:checked + label {
