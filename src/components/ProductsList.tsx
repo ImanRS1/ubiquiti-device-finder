@@ -134,7 +134,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: 1262px;
   min-height: 561px;
-  margin: 23px 24px 80px 80px;
+  margin: 23px auto 80px auto;
 `;
 
 export default ProductsList;
