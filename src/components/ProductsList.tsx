@@ -1,21 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import defaultTheme from "@/themes/defaultTheme";
+import Link from "next/link";
 
 const theme = defaultTheme();
 
 const Product = (imageId: string, productLine: string, productName: string) => {
   return (
-    <ProductRow>
-      <FirstColumn>
-        <img
-          src={`https://static.ui.com/fingerprint/ui/icons/${imageId}_25x25.png`}
-          alt={productName}
-        />
-      </FirstColumn>
-      <SecondColumn>{productLine}</SecondColumn>
-      <ThirdColumn>{productName}</ThirdColumn>
-    </ProductRow>
+    <Link href={imageId}>
+      <ProductRow>
+        <FirstColumn>
+          <img
+            src={`https://static.ui.com/fingerprint/ui/icons/${imageId}_25x25.png`}
+            alt={productName}
+          />
+        </FirstColumn>
+        <SecondColumn>{productLine}</SecondColumn>
+        <ThirdColumn>{productName}</ThirdColumn>
+      </ProductRow>
+    </Link>
   );
 };
 
@@ -135,6 +138,10 @@ const Wrapper = styled.div`
   width: 1262px;
   min-height: 561px;
   margin: 23px auto 80px auto;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export default ProductsList;

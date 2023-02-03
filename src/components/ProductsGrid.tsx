@@ -1,23 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 import defaultTheme from "@/themes/defaultTheme";
+import Link from "next/link";
 
 const theme = defaultTheme();
 
 const Product = (imageId: string, productLine: string, productName: string) => {
   return (
-    <ProductContainer>
-      <div className="image-container">
-        <img
-          src={`https://static.ui.com/fingerprint/ui/icons/${imageId}_129x129.png`}
-          alt={productName}
-        />
-      </div>
-      <div className="info-container">
-        {productName}
-        <span>{productLine}</span>
-      </div>
-    </ProductContainer>
+    <Link href={imageId}>
+      <ProductContainer>
+        <div className="image-container">
+          <img
+            src={`https://static.ui.com/fingerprint/ui/icons/${imageId}_129x129.png`}
+            alt={productName}
+          />
+        </div>
+        <div className="info-container">
+          {productName}
+          <span>{productLine}</span>
+        </div>
+      </ProductContainer>
+    </Link>
   );
 };
 
@@ -108,6 +111,7 @@ const ProductContainer = styled.div`
     justify-content: space-between;
     font-size: 14px;
     height: 44px;
+    color: ${theme.black65};
 
     span {
       font-size: 12px;
@@ -141,6 +145,10 @@ const TitleRow = styled.div`
 const Wrapper = styled.div`
   width: 1262px;
   margin: 5.5px 47.5px 0 57.5px;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export default ProductsGrid;
