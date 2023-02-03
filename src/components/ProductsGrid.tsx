@@ -7,8 +7,8 @@ const theme = defaultTheme();
 
 const Product = (imageId: string, productLine: string, productName: string) => {
   return (
-    <Link href={imageId}>
-      <ProductContainer>
+    <ProductContainer>
+      <Link href={imageId}>
         <div className="image-container">
           <img
             src={`https://static.ui.com/fingerprint/ui/icons/${imageId}_129x129.png`}
@@ -19,8 +19,8 @@ const Product = (imageId: string, productLine: string, productName: string) => {
           {productName}
           <span>{productLine}</span>
         </div>
-      </ProductContainer>
-    </Link>
+      </Link>
+    </ProductContainer>
   );
 };
 
