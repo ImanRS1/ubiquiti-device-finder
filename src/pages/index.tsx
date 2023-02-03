@@ -1,26 +1,16 @@
-import Header from "@/components/Header";
-import Navbar from "@/components/NavBar";
+import Navbar from "@/components/Navbar";
 import ProductsList from "@/components/ProductsList";
 import ProductsGrid from "@/components/ProductsGrid";
-import styled from "styled-components";
 import { GlobalState } from "@/context/GlobalState";
 import { useContext } from "react";
+import Layout from "@/components/Layout";
 
 export default function Home() {
   const globalState = useContext(GlobalState);
   return (
-    <Wrapper>
-      <Header />
+    <Layout>
       <Navbar />
       {globalState.listView ? <ProductsList /> : <ProductsGrid />}
-    </Wrapper>
+    </Layout>
   );
 }
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  overflow: hidden;
-`;

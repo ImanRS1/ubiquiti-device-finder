@@ -5,11 +5,11 @@ import { GlobalState } from "@/context/GlobalState";
 
 const theme = defaultTheme();
 
-interface filterProps {
+interface FilterProps {
   productline: string;
 }
 
-const FilterOption = (props: filterProps) => {
+const FilterOption = (props: FilterProps) => {
   const globalState = useContext(GlobalState);
   const { filterOptions, setFilterOptions } = globalState;
 

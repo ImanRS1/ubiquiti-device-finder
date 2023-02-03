@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import defaultTheme from "@/themes/defaultTheme";
 import { GlobalState } from "@/context/GlobalState";
@@ -22,7 +22,7 @@ const Navbar = () => {
           </button>
           <input type="text" placeholder="Search" />
           <button>
-            <img src="./icons/close-icon.svg" alt="A search icon" />
+            <img src="./icons/close-icon.svg" alt="A reset icon" />
           </button>
         </form>
       </SearchField>
