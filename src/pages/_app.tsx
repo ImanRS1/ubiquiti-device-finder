@@ -8,6 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [listView, setListView] = useState(true);
   const [filterWindow, setFilterWindow] = useState(false);
   const [filterOptions, setFilterOptions] = useState([""]);
+  const [searchValue, setSearchValue] = useState("");
   let devicesData = { devices: [] };
 
   const fetcher = async () =>
@@ -35,6 +36,8 @@ export default function App({ Component, pageProps }: AppProps) {
         setFilterWindow,
         filterOptions,
         setFilterOptions,
+        searchValue,
+        setSearchValue,
         devicesData,
       }}
     >

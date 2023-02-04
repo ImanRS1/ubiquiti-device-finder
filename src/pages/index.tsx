@@ -8,6 +8,8 @@ import Layout from "@/components/Layout";
 export default function Home() {
   const globalState = useContext(GlobalState);
 
+  console.log(globalState.searchValue, globalState.filterOptions);
+
   return (
     <Layout>
       <Navbar />

@@ -9,6 +9,8 @@ interface GlobalState {
   filterOptions: string[];
   setFilterOptions: Dispatch<SetStateAction<Array<string>>>;
   devicesData: DevicesAPI;
+  searchValue: string;
+  setSearchValue: Dispatch<SetStateAction<string>>;
 }
 
 export const GlobalState = createContext({} as GlobalState);

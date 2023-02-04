@@ -13,15 +13,34 @@ const Navbar = () => {
     globalState.setListView(active);
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    globalState.setSearchValue(e.target.value);
+  };
+
+  const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    globalState.setSearchValue("");
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
     <Wrapper>
       <SearchField>
-        <form className="search">
-          <button type="submit" className="search-button">
+        <form className="search" onSubmit={handleSubmit}>
+          <div className="search-button">
             <img src="./icons/search-icon.svg" alt="A search icon" />
-          </button>
-          <input type="text" placeholder="Search" />
-          <button>
+          </div>
+          <input
+            type="text"
+            placeholder="Search"
+            onChange={handleChange}
+            className="search-field"
+            value={globalState.searchValue}
+          />
+          <button onClick={handleReset}>
             <img src="./icons/close-icon.svg" alt="A reset icon" />
           </button>
         </form>
@@ -86,7 +105,6 @@ const SearchField = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   overflow: hidden;
 
   .search-button {

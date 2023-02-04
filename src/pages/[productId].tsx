@@ -144,7 +144,6 @@ const Wrapper = styled.div`
     height: 215px;
     width: 400px;
     margin-left: 32px;
-    margin-bottom: 41px;
   }
 `;
 
