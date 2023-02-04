@@ -2,80 +2,39 @@ import React from "react";
 import styled from "styled-components";
 import defaultTheme from "@/themes/defaultTheme";
 import Link from "next/link";
+import { GlobalState } from "@/context/GlobalState";
+import { useContext } from "react";
 
 const theme = defaultTheme();
 
-const Product = (imageId: string, productLine: string, productName: string) => {
-  return (
-    <ProductContainer>
-      <Link href={imageId}>
-        <div className="image-container">
-          <img
-            src={`https://static.ui.com/fingerprint/ui/icons/${imageId}_129x129.png`}
-            alt={productName}
-          />
-        </div>
-        <div className="info-container">
-          {productName}
-          <span>{productLine}</span>
-        </div>
-      </Link>
-    </ProductContainer>
-  );
-};
-
 const ProductsGrid = () => {
+  const globalState = useContext(GlobalState);
+  const { devicesData } = globalState;
+
   return (
     <Wrapper>
       <TitleRow>
-        <FirstColumn>123 devices</FirstColumn>
+        <FirstColumn>{devicesData?.devices.length} devices</FirstColumn>
       </TitleRow>
       <ProductsWrapper>
-        {Product(
-          "06a25b40-ef1f-463a-82d9-13236866ea3d",
-          "UniFi",
-          "Access Point WiFi 6 In-wall"
-        )}
-        {Product(
-          "0d482159-5482-4cf7-b8ab-cfd1c798bab9",
-          "airMAX",
-          "airCube AC"
-        )}
-        {Product(
-          "fe65d707-1bdb-46a3-b79b-bd600150226e",
-          "UniFi LTE",
-          "UniFi LTE"
-        )}
-        {Product(
-          "06a25b40-ef1f-463a-82d9-13236866ea3d",
-          "UniFi",
-          "Access Point WiFi 6 In-wall"
-        )}
-        {Product(
-          "0d482159-5482-4cf7-b8ab-cfd1c798bab9",
-          "airMAX",
-          "airCube AC"
-        )}
-        {Product(
-          "fe65d707-1bdb-46a3-b79b-bd600150226e",
-          "UniFi LTE",
-          "UniFi LTE"
-        )}
-        {Product(
-          "06a25b40-ef1f-463a-82d9-13236866ea3d",
-          "UniFi",
-          "Access Point WiFi 6 In-wall"
-        )}
-        {Product(
-          "0d482159-5482-4cf7-b8ab-cfd1c798bab9",
-          "airMAX",
-          "airCube AC"
-        )}
-        {Product(
-          "fe65d707-1bdb-46a3-b79b-bd600150226e",
-          "UniFi LTE",
-          "UniFi LTE"
-        )}
+        {devicesData?.devices.map((device) => {
+          return (
+            <ProductContainer key={device.id}>
+              <Link href={device.icon.id}>
+                <div className="image-container">
+                  <img
+                    src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_129x129.png`}
+                    alt={device.product.name}
+                  />
+                </div>
+                <div className="info-container">
+                  {device.product.name}
+                  <span>{device.line.name}</span>
+                </div>
+              </Link>
+            </ProductContainer>
+          );
+        })}
       </ProductsWrapper>
     </Wrapper>
   );

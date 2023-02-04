@@ -1,33 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import defaultTheme from "@/themes/defaultTheme";
+import { GlobalState } from "@/context/GlobalState";
+import { useContext } from "react";
 import Link from "next/link";
 
 const theme = defaultTheme();
 
-const Product = (imageId: string, productLine: string, productName: string) => {
-  return (
-    <Link href={imageId}>
-      <ProductRow>
-        <FirstColumn>
-          <img
-            src={`https://static.ui.com/fingerprint/ui/icons/${imageId}_25x25.png`}
-            alt={productName}
-          />
-        </FirstColumn>
-        <SecondColumn>{productLine}</SecondColumn>
-        <ThirdColumn>{productName}</ThirdColumn>
-      </ProductRow>
-    </Link>
-  );
-};
-
 const ProductsList = () => {
+  const globalState = useContext(GlobalState);
+  const { devicesData } = globalState;
+
   return (
     <Wrapper>
       <TitleRow>
         <FirstColumn>
-          <div className="title-row">123 devices</div>
+          <div className="title-row">{devicesData?.devices.length} devices</div>
         </FirstColumn>
         <SecondColumn>
           <div className="title-row">PRODUCT LINE</div>
@@ -36,39 +24,23 @@ const ProductsList = () => {
           <div className="title-row">NAME</div>
         </ThirdColumn>
       </TitleRow>
-      {Product(
-        "06a25b40-ef1f-463a-82d9-13236866ea3d",
-        "UniFi",
-        "Access Point WiFi 6 In-wall"
-      )}
-      {Product("0d482159-5482-4cf7-b8ab-cfd1c798bab9", "airMAX", "airCube AC")}
-      {Product(
-        "fe65d707-1bdb-46a3-b79b-bd600150226e",
-        "UniFi LTE",
-        "UniFi LTE"
-      )}
-      {Product(
-        "06a25b40-ef1f-463a-82d9-13236866ea3d",
-        "UniFi",
-        "Access Point WiFi 6 In-wall"
-      )}
-      {Product("0d482159-5482-4cf7-b8ab-cfd1c798bab9", "airMAX", "airCube AC")}
-      {Product(
-        "fe65d707-1bdb-46a3-b79b-bd600150226e",
-        "UniFi LTE",
-        "UniFi LTE"
-      )}
-      {Product(
-        "06a25b40-ef1f-463a-82d9-13236866ea3d",
-        "UniFi",
-        "Access Point WiFi 6 In-wall"
-      )}
-      {Product("0d482159-5482-4cf7-b8ab-cfd1c798bab9", "airMAX", "airCube AC")}
-      {Product(
-        "fe65d707-1bdb-46a3-b79b-bd600150226e",
-        "UniFi LTE",
-        "UniFi LTE"
-      )}
+
+      {devicesData?.devices.map((device) => {
+        return (
+          <Link href={device.icon.id} key={device.id}>
+            <ProductRow>
+              <FirstColumn>
+                <img
+                  src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_25x25.png`}
+                  alt={device.product.name}
+                />
+              </FirstColumn>
+              <SecondColumn>{device.line.name}</SecondColumn>
+              <ThirdColumn>{device.product.name}</ThirdColumn>
+            </ProductRow>
+          </Link>
+        );
+      })}
     </Wrapper>
   );
 };
