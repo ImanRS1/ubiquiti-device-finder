@@ -8,6 +8,15 @@ const theme = defaultTheme();
 
 const FilterWindow = () => {
   const globalState = useContext(GlobalState);
+
+  const allProductLines = globalState.devicesData?.devices
+    .filter((product) => product.line.name !== "Unknown")
+    .map((product) => product.line.name);
+
+  const distinctProductLines = allProductLines?.filter(
+    (n, i) => allProductLines.indexOf(n) === i
+  );
+
   return (
     <FilterContainer>
       <FilterHeader>
@@ -20,10 +29,9 @@ const FilterWindow = () => {
       </FilterHeader>
       <FilterTitle>Product line</FilterTitle>
       <FilterOptionsContainer>
-        <FilterOption productline="UniFi" />
-        <FilterOption productline="UniFi LTE" />
-        <FilterOption productline="UniFi Protec" />
-        <FilterOption productline="UniFi Access" />
+        {distinctProductLines?.map((productline) => (
+          <FilterOption productline={productline} key={productline} />
+        ))}
       </FilterOptionsContainer>
     </FilterContainer>
   );

@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
     );
 
   function FetchDevicesData() {
-    const { data, error } = useSWR("products-data", fetcher);
+    const { data, error } = useSWR("devices-data", fetcher);
 
     // if (error) return <div>Failed to load</div>;
     // if (!data) return <div>Loading...</div>;

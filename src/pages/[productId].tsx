@@ -3,52 +3,114 @@ import ProductNavbar from "@/components/ProductNavbar";
 import { useRouter } from "next/router";
 import defaultTheme from "@/themes/defaultTheme";
 import styled from "styled-components";
+import { GlobalState } from "@/context/GlobalState";
+import { useContext } from "react";
 
 const theme = defaultTheme();
 
 function ProductDetail() {
   const router = useRouter();
   const { productId } = router.query;
+  const globalState = useContext(GlobalState);
+  const { devicesData } = globalState;
+
+  const device = (devicesData?.devices?.filter(
+    (device) => device.icon.id === productId
+  ))[0];
 
   return (
     <Layout>
-      <ProductNavbar product="Access Point WiFi 6 In-wall" />
+      <ProductNavbar product={device?.product?.name} />
       <Wrapper>
         <div className="img-container">
           <img
             src={`https://static.ui.com/fingerprint/ui/icons/${productId}_257x257.png`}
             alt={"productName"}
+            onError={({ currentTarget }) => {
+              currentTarget.onerror = null;
+              currentTarget.src =
+                "https://static.ui.com/fingerprint/ui/icons/98702c27-c680-4d23-bd75-155c7f07b013_257x257.png";
+            }}
           />
         </div>
         <div className="product-container">
           <DataRow>
             <div>Product line</div>
-            <div>Unifi</div>
+            <div>{device?.line.name}</div>
           </DataRow>
           <DataRow>
             <div>ID</div>
-            <div>unifi-network</div>
+            <div>{device?.line.id}</div>
           </DataRow>
           <DataRow>
             <div>Name</div>
-            <div>Access Point WiFi 6 In-Wall</div>
+            <div>{device?.product?.name}</div>
           </DataRow>
-          <DataRow>
-            <div>Short name</div>
-            <div>U6-Enterprise</div>
-          </DataRow>
-          <DataRow>
-            <div>Max. power</div>
-            <div>25 W</div>
-          </DataRow>
-          <DataRow>
-            <div>Speed</div>
-            <div>2400 Mbps</div>
-          </DataRow>
-          <DataRow>
-            <div>Number of ports</div>
-            <div>5</div>
-          </DataRow>
+
+          {device?.shortnames?.[0] ? (
+            <DataRow>
+              <div>Short names</div>
+              <div>{device.shortnames.map((shortname) => `${shortname} `)}</div>
+            </DataRow>
+          ) : (
+            ""
+          )}
+
+          {device?.unifi ? (
+            <>
+              {device.unifi.network?.radios?.na?.maxPower ? (
+                <DataRow>
+                  <div>Max. power</div>
+                  <div>{device.unifi.network.radios.na.maxPower} W</div>
+                </DataRow>
+              ) : (
+                ""
+              )}
+
+              {device.unifi.network?.ethernetMaxSpeedMegabitsPerSecond ? (
+                <DataRow>
+                  <div>Speed</div>
+                  <div>
+                    {device.unifi.network.ethernetMaxSpeedMegabitsPerSecond}{" "}
+                    Mbps
+                  </div>
+                </DataRow>
+              ) : (
+                ""
+              )}
+
+              {device.unifi.network?.ports?.standard ||
+              device.unifi.network?.numberOfPorts ? (
+                <DataRow>
+                  <div>Number of ports</div>
+                  <div>
+                    {device.unifi.network.ports?.standard ||
+                      device.unifi.network.numberOfPorts}
+                  </div>
+                </DataRow>
+              ) : (
+                ""
+              )}
+              {device.unifi.network?.minimumFirmwareRequired ? (
+                <DataRow>
+                  <div>Minimum firmware</div>
+                  <div>{device.unifi.network.minimumFirmwareRequired}</div>
+                </DataRow>
+              ) : (
+                ""
+              )}
+            </>
+          ) : (
+            ""
+          )}
+          {device?.uisp?.firmware?.platform ? (
+            <DataRow>
+              <div>Platform</div>
+              <div>{device.uisp.firmware.platform}</div>
+            </DataRow>
+          ) : (
+            ""
+          )}
         </div>
       </Wrapper>
     </Layout>
