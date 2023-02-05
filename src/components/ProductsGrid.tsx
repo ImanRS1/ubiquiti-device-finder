@@ -17,10 +17,10 @@ const ProductsGrid = () => {
   return (
     <Wrapper>
       <TitleRow>
-        <FirstColumn>{devicesData?.devices.length} devices</FirstColumn>
+        <FirstColumn>{devicesData?.devices?.length} devices</FirstColumn>
       </TitleRow>
       <ProductsWrapper>
-        {devicesData?.devices.map((device: Device) => {
+        {devicesData?.devices?.map((device: Device) => {
           return (
             <ProductContainer key={device.id}>
               <Link href={device.icon.id}>
@@ -28,6 +28,11 @@ const ProductsGrid = () => {
                   <img
                     src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_129x129.png`}
                     alt={device.product.name}
+                    onError={({ currentTarget }) => {
+                      currentTarget.onerror = null;
+                      currentTarget.src =
+                        "https://static.ui.com/fingerprint/ui/icons/98702c27-c680-4d23-bd75-155c7f07b013_129x129.png";
+                    }}
                   />
                 </div>
                 <div className="info-container">
