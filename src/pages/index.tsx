@@ -4,27 +4,36 @@ import ProductsGrid from "@/components/ProductsGrid";
 import { GlobalState } from "@/context/GlobalState";
 import { useContext, useEffect } from "react";
 import Layout from "@/components/Layout";
+import { Device } from "@/interfaces/devicesAPI.interface";
 
 export default function Home() {
   const globalState = useContext(GlobalState);
   const { searchValue, filterOptions, devicesData, setSearchResult } =
     globalState;
 
+  const noFilterOptionsPicked = (filterOptions: string[]) =>
+    filterOptions.length === 0;
+
+  const searchValuesGiven = (searchValues: string) => searchValues.length > 0;
+
   useEffect(() => {
-    if (filterOptions.length === 0) {
+    const filterDevicesOnSearchInput = (productData: Device[]) => {
+      return productData?.filter((device) => {
+        if (
+          device.product.name
+            .toLocaleLowerCase()
+            .includes(searchValue.toLocaleLowerCase())
+        ) {
+          return device.product.name;
+        }
+      });
+    };
+
+    if (noFilterOptionsPicked(filterOptions)) {
       setSearchResult(devicesData?.devices);
 
-      if (searchValue.length > 0) {
-        const searchedDevices = devicesData?.devices?.filter((product) => {
-          if (
-            product.product.name
-              .toLocaleLowerCase()
-              .includes(searchValue.toLocaleLowerCase())
-          ) {
-            return product.product.name;
-          }
-        });
-        setSearchResult(searchedDevices);
+      if (searchValuesGiven(searchValue)) {
+        setSearchResult(filterDevicesOnSearchInput(devicesData?.devices));
       }
     } else {
       const searchedProductLine = devicesData?.devices?.filter((product) => {
@@ -32,17 +41,8 @@ export default function Home() {
       });
       setSearchResult(searchedProductLine);
 
-      if (searchValue.length > 0) {
-        const searchedDevices = searchedProductLine?.filter((product) => {
-          if (
-            product.product.name
-              .toLocaleLowerCase()
-              .includes(searchValue.toLocaleLowerCase())
-          ) {
-            return product.product.name;
-          }
-        });
-        setSearchResult(searchedDevices);
+      if (searchValuesGiven(searchValue)) {
+        setSearchResult(filterDevicesOnSearchInput(searchedProductLine));
       }
     }
   }, [searchValue, filterOptions, devicesData, setSearchResult]);

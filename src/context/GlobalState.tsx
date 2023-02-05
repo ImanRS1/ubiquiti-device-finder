@@ -1,4 +1,4 @@
-import { DevicesAPI } from "@/interfaces/devicesAPI.interface";
+import { Device, DevicesAPI } from "@/interfaces/devicesAPI.interface";
 import { createContext, Dispatch, SetStateAction } from "react";
 
 interface GlobalState {
@@ -9,8 +9,8 @@ interface GlobalState {
   filterOptions: string[];
   setFilterOptions: Dispatch<SetStateAction<string[]>>;
   devicesData: DevicesAPI;
-  searchResult: any;
-  setSearchResult: any;
+  searchResult: Device[];
+  setSearchResult: Dispatch<SetStateAction<Device[]>>;
   searchValue: string;
   setSearchValue: Dispatch<SetStateAction<string>>;
 }
