@@ -7,10 +7,9 @@ const fetcher = async () =>
 
 export default function FetchDevicesData() {
   const { data, error } = useSWR("devices-data", fetcher);
+  // TODO: handle error and loading stage globally
+  // if (error)
+  // if (!data)
 
-  // if (error) return <div>Failed to load</div>;
-  // if (!data) return <div>Loading...</div>;
-
-  const devicesData = data;
-  return devicesData;
+  return data;
 }
