@@ -1,23 +1,22 @@
-import React from "react";
 import styled from "styled-components";
-import Logo from "./Logo";
+
 import defaultTheme from "@/themes/defaultTheme";
+
+import Logo from "./Logo";
 
 const theme = defaultTheme();
 
-const Header = () => {
-  return (
-    <Wrapper>
-      <LeftContainer>
-        <Logo />
-        <p>Devices</p>
-      </LeftContainer>
-      <RightContainer>
-        <p>Author/Iman Reza Soltani</p>
-      </RightContainer>
-    </Wrapper>
-  );
-};
+const Header = () => (
+  <Wrapper>
+    <LeftContainer>
+      <Logo />
+      <p>Devices</p>
+    </LeftContainer>
+    <RightContainer>
+      <p>Author/Iman Reza Soltani</p>
+    </RightContainer>
+  </Wrapper>
+);
 
 const LeftContainer = styled.div`
   display: flex;

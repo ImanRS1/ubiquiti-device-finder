@@ -1,13 +1,10 @@
-import React from "react";
 import styled from "styled-components";
 
-const Logo = () => {
-  return (
-    <Wrapper>
-      <img src="./logos/ubiquiti-logo.svg" alt="Ubiquiti logo" />
-    </Wrapper>
-  );
-};
+const Logo = () => (
+  <Wrapper>
+    <img src="./logos/ubiquiti-logo.svg" alt="Ubiquiti logo" />
+  </Wrapper>
+);
 
 const Wrapper = styled.div`
   width: 56px;

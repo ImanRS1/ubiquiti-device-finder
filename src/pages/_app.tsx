@@ -1,9 +1,11 @@
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
 import { useState } from "react";
+
 import { GlobalState } from "@/context/GlobalState";
-import FetchDevicesData from "@/utils/FetchDeviceData";
 import { Device } from "@/interfaces/devicesAPI.interface";
+import FetchDevicesData from "@/utils/FetchDeviceData";
+
+import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [listView, setListView] = useState(true);

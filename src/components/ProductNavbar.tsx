@@ -1,9 +1,7 @@
-import { useContext } from "react";
 import styled from "styled-components";
-import defaultTheme from "@/themes/defaultTheme";
-import { GlobalState } from "@/context/GlobalState";
-import FilterWindow from "./FilterWindow";
 import Link from "next/link";
+
+import defaultTheme from "@/themes/defaultTheme";
 
 const theme = defaultTheme();
 
@@ -11,18 +9,16 @@ type ProductProps = {
   product: string | string[] | undefined;
 };
 
-const ProductNavbar = (props: ProductProps) => {
-  return (
-    <Wrapper>
-      <div className="back-button">
-        <Link href="/">
-          <img src="./icons/left-chevron.svg" alt="A back icon" />
-        </Link>
-      </div>
-      <div className="text">{props.product}</div>
-    </Wrapper>
-  );
-};
+const ProductNavbar = (props: ProductProps) => (
+  <Wrapper>
+    <div className="back-button">
+      <Link href="/">
+        <img src="./icons/left-chevron.svg" alt="A back icon" />
+      </Link>
+    </div>
+    <div className="text">{props.product}</div>
+  </Wrapper>
+);
 
 const Wrapper = styled.div`
   width: 100vw;

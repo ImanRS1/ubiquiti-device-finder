@@ -1,5 +1,6 @@
-import Header from "@/components/Header";
 import styled from "styled-components";
+
+import Header from "@/components/Header";
 
 type Layout = {
   children: React.ReactNode;

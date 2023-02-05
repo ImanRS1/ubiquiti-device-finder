@@ -1,7 +1,10 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
+
 import styled from "styled-components";
+
 import defaultTheme from "@/themes/defaultTheme";
 import { GlobalState } from "@/context/GlobalState";
+
 import FilterOption from "./FilterOption";
 
 const theme = defaultTheme();

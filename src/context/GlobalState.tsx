@@ -1,5 +1,6 @@
-import { Device, DevicesAPI } from "@/interfaces/devicesAPI.interface";
 import { createContext, Dispatch, SetStateAction } from "react";
+
+import { Device, DevicesAPI } from "@/interfaces/devicesAPI.interface";
 
 interface GlobalState {
   listView: boolean;

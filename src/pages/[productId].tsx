@@ -1,10 +1,12 @@
+import { useContext } from "react";
+
+import styled from "styled-components";
+import { useRouter } from "next/router";
+
 import Layout from "@/components/Layout";
 import ProductNavbar from "@/components/ProductNavbar";
-import { useRouter } from "next/router";
 import defaultTheme from "@/themes/defaultTheme";
-import styled from "styled-components";
 import { GlobalState } from "@/context/GlobalState";
-import { useContext } from "react";
 import { Device } from "@/interfaces/devicesAPI.interface";
 
 const theme = defaultTheme();
@@ -19,61 +21,57 @@ function ProductDetail() {
     (device) => device.icon.id === productId
   ))[0];
 
-  const renderUispSpecificRows = (device: Device) => {
-    return (
-      <DataRow>
-        <div>Platform</div>
-        <div>{device?.uisp?.firmware?.platform}</div>
-      </DataRow>
-    );
-  };
+  const renderUispSpecificRows = (device: Device) => (
+    <DataRow>
+      <div>Platform</div>
+      <div>{device?.uisp?.firmware?.platform}</div>
+    </DataRow>
+  );
 
-  const renderUnifiSpecificRows = (device: Device) => {
-    return (
-      <>
-        {device?.unifi?.network?.radios?.na?.maxPower ? (
-          <DataRow>
-            <div>Max. power</div>
-            <div>{device.unifi.network.radios.na.maxPower} W</div>
-          </DataRow>
-        ) : (
-          ""
-        )}
+  const renderUnifiSpecificRows = (device: Device) => (
+    <>
+      {device?.unifi?.network?.radios?.na?.maxPower ? (
+        <DataRow>
+          <div>Max. power</div>
+          <div>{device.unifi.network.radios.na.maxPower} W</div>
+        </DataRow>
+      ) : (
+        ""
+      )}
 
-        {device?.unifi?.network?.ethernetMaxSpeedMegabitsPerSecond ? (
-          <DataRow>
-            <div>Speed</div>
-            <div>
-              {device.unifi.network.ethernetMaxSpeedMegabitsPerSecond} Mbps
-            </div>
-          </DataRow>
-        ) : (
-          ""
-        )}
+      {device?.unifi?.network?.ethernetMaxSpeedMegabitsPerSecond ? (
+        <DataRow>
+          <div>Speed</div>
+          <div>
+            {device.unifi.network.ethernetMaxSpeedMegabitsPerSecond} Mbps
+          </div>
+        </DataRow>
+      ) : (
+        ""
+      )}
 
-        {device?.unifi?.network?.ports?.standard ||
-        device?.unifi?.network?.numberOfPorts ? (
-          <DataRow>
-            <div>Number of ports</div>
-            <div>
-              {device.unifi.network.ports?.standard ||
-                device.unifi.network.numberOfPorts}
-            </div>
-          </DataRow>
-        ) : (
-          ""
-        )}
-        {device?.unifi?.network?.minimumFirmwareRequired ? (
-          <DataRow>
-            <div>Minimum firmware</div>
-            <div>{device.unifi.network.minimumFirmwareRequired}</div>
-          </DataRow>
-        ) : (
-          ""
-        )}
-      </>
-    );
-  };
+      {device?.unifi?.network?.ports?.standard ||
+      device?.unifi?.network?.numberOfPorts ? (
+        <DataRow>
+          <div>Number of ports</div>
+          <div>
+            {device.unifi.network.ports?.standard ||
+              device.unifi.network.numberOfPorts}
+          </div>
+        </DataRow>
+      ) : (
+        ""
+      )}
+      {device?.unifi?.network?.minimumFirmwareRequired ? (
+        <DataRow>
+          <div>Minimum firmware</div>
+          <div>{device.unifi.network.minimumFirmwareRequired}</div>
+        </DataRow>
+      ) : (
+        ""
+      )}
+    </>
+  );
 
   return (
     <Layout>

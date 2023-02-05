@@ -1,9 +1,10 @@
+import { useContext, useEffect } from "react";
+
 import Navbar from "@/components/Navbar";
 import ProductsList from "@/components/ProductsList";
 import ProductsGrid from "@/components/ProductsGrid";
-import { GlobalState } from "@/context/GlobalState";
-import { useContext, useEffect } from "react";
 import Layout from "@/components/Layout";
+import { GlobalState } from "@/context/GlobalState";
 import { Device } from "@/interfaces/devicesAPI.interface";
 
 export default function Home() {
@@ -17,8 +18,8 @@ export default function Home() {
   const searchValuesGiven = (searchValues: string) => searchValues.length > 0;
 
   useEffect(() => {
-    const filterDevicesOnSearchInput = (productData: Device[]) => {
-      return productData?.filter((device) => {
+    const filterDevicesOnSearchInput = (productData: Device[]) =>
+      productData?.filter((device) => {
         if (
           device.product.name
             .toLocaleLowerCase()
@@ -27,7 +28,6 @@ export default function Home() {
           return device.product.name;
         }
       });
-    };
 
     if (noFilterOptionsPicked(filterOptions)) {
       setSearchResult(devicesData?.devices);
@@ -36,9 +36,9 @@ export default function Home() {
         setSearchResult(filterDevicesOnSearchInput(devicesData?.devices));
       }
     } else {
-      const searchedProductLine = devicesData?.devices?.filter((product) => {
-        return filterOptions.includes(product.line.name);
-      });
+      const searchedProductLine = devicesData?.devices?.filter((product) =>
+        filterOptions.includes(product.line.name)
+      );
       setSearchResult(searchedProductLine);
 
       if (searchValuesGiven(searchValue)) {
