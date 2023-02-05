@@ -25,14 +25,10 @@ const Navbar = () => {
     globalState.setSearchValue("");
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
-
   return (
     <Wrapper>
       <SearchField>
-        <form className="search" onSubmit={handleSubmit}>
+        <div className="form">
           <div className="search-button">
             <img src="./icons/search-icon.svg" alt="A search icon" />
           </div>
@@ -46,7 +42,7 @@ const Navbar = () => {
           <button onClick={handleReset}>
             <img src="./icons/close-icon.svg" alt="A reset icon" />
           </button>
-        </form>
+        </div>
       </SearchField>
       <Options>
         <button onClick={() => handleClick(true)}>
@@ -113,7 +109,7 @@ const SearchField = styled.div`
   .search-button {
     padding-right: 2px;
   }
-  form {
+  .form {
     display: flex;
     align-items: center;
     width: 100%;

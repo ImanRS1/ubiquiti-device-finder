@@ -6,10 +6,16 @@ import Logo from "./Logo";
 
 const theme = defaultTheme();
 
+const handleClick = () => {
+  window.location.reload();
+};
+
 const Header = () => (
   <Wrapper>
     <LeftContainer>
-      <Logo />
+      <button onClick={handleClick}>
+        <Logo />
+      </button>
       <p>Devices</p>
     </LeftContainer>
     <RightContainer>
