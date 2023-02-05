@@ -39,6 +39,7 @@ const RightContainer = styled.div`
 
 const Wrapper = styled.header`
   width: 100vw;
+  max-width: 100%;
   height: 56px;
   display: flex;
   justify-content: space-between;

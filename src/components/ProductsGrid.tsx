@@ -110,7 +110,7 @@ const TitleRow = styled.div`
 
 const Wrapper = styled.div`
   width: 1262px;
-  margin: 5.5px 47.5px 0 57.5px;
+  margin: 5.5px auto 5.5px auto;
 
   a {
     text-decoration: none;
