@@ -32,6 +32,11 @@ const LeftContainer = styled.div`
     font-size: 20px;
     letter-spacing: -0.5px;
     color: ${theme.grey2};
+
+    ${theme.breakpoints.mobile} {
+      font-size: 16px;
+      margin-left: 10px;
+    }
   }
 `;
 
@@ -40,6 +45,16 @@ const RightContainer = styled.div`
     margin-right: 28px;
     font-size: 14px;
     color: ${theme.black65};
+
+    ${theme.breakpoints.tablet} {
+      margin-right: 10px;
+    }
+
+    ${theme.breakpoints.mobile} {
+      font-size: 12px;
+      width: 70px;
+      margin-right: 7px;
+    }
   }
 `;
 

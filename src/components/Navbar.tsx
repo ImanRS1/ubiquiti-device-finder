@@ -87,10 +87,21 @@ const Options = styled.div`
 
   .filter-button {
     color: ${theme.black45};
+    font-size: 14px;
   }
 
   button {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  ${theme.breakpoints.tablet} {
+    margin-right: 10px;
+  }
+
+  ${theme.breakpoints.mobile} {
+    margin-right: 7px;
   }
 `;
 
@@ -108,6 +119,8 @@ const SearchField = styled.div`
 
   .search-button {
     padding-right: 2px;
+    display: flex;
+    align-items: center;
   }
   .form {
     display: flex;
@@ -128,7 +141,7 @@ const SearchField = styled.div`
   input[type="text"] {
     flex-grow: 1;
     color: ${theme.black85};
-    font-size: 24;
+    font-size: 14px;
     caret-color: ${theme.blue1};
 
     &:focus {

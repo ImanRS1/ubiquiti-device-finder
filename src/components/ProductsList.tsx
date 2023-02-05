@@ -34,9 +34,20 @@ const ProductsList = () => {
       {devicesData?.devices?.map((device: Device) => (
         <Link href={device.icon.id} key={device.id}>
           <ProductRow>
-            <FirstColumn>
+            <FirstColumn className="desktop-view">
               <img
                 src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_25x25.png`}
+                alt={device.product.name}
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null;
+                  currentTarget.src =
+                    "https://static.ui.com/fingerprint/ui/icons/98702c27-c680-4d23-bd75-155c7f07b013_25x25.png";
+                }}
+              />
+            </FirstColumn>
+            <FirstColumn className="mobile-view">
+              <img
+                src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_51x51.png`}
                 alt={device.product.name}
                 onError={({ currentTarget }) => {
                   currentTarget.onerror = null;
@@ -66,6 +77,24 @@ const ThirdColumn = styled.div`
   .title-row {
     font-weight: 700;
   }
+
+  ${theme.breakpoints.mobile} {
+    font-size: 13px;
+    justify-content: flex-end;
+    padding-left: 8px;
+    box-sizing: border-box;
+    text-align: right;
+
+    .title-row {
+      margin-right: 0;
+    }
+  }
+
+  ${theme.breakpoints.smallMobile} {
+    font-size: 12px;
+    flex-grow: 0;
+    width: 150px;
+  }
 `;
 
 const SecondColumn = styled.div`
@@ -81,6 +110,20 @@ const SecondColumn = styled.div`
   .title-row {
     font-weight: 700;
   }
+
+  ${theme.breakpoints.mobile} {
+    width: auto;
+    font-size: 13px;
+  }
+
+  ${theme.breakpoints.smallMobile} {
+    flex-grow: 1;
+    font-size: 12px;
+
+    .title-row {
+      white-space: nowrap;
+    }
+  }
 `;
 
 const FirstColumn = styled.div`
@@ -92,6 +135,20 @@ const FirstColumn = styled.div`
   color: ${theme.grey4};
   width: 140px;
   height: 100%;
+
+  ${theme.breakpoints.mobile} {
+    width: 55px;
+    margin-right: 150px;
+
+    .title-row {
+      text-align: center;
+    }
+  }
+
+  ${theme.breakpoints.smallMobile} {
+    margin-right: 50px;
+    font-size: 12px;
+  }
 `;
 
 const ProductRow = styled.div`
@@ -103,6 +160,24 @@ const ProductRow = styled.div`
   &:hover {
     background-color: ${theme.grey5};
     cursor: pointer;
+  }
+
+  .mobile-view {
+    display: none;
+  }
+
+  ${theme.breakpoints.mobile} {
+    height: 55px;
+    margin-right: 0;
+    justify-content: space-between;
+
+    .mobile-view {
+      display: flex;
+    }
+
+    .desktop-view {
+      display: none;
+    }
   }
 `;
 
@@ -122,6 +197,14 @@ const Wrapper = styled.div`
 
   a {
     text-decoration: none;
+  }
+
+  ${theme.breakpoints.productsViewBreak} {
+    width: 95vw;
+  }
+
+  ${theme.breakpoints.mobile} {
+    width: 90vw;
   }
 `;
 
