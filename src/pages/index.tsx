@@ -23,7 +23,7 @@ export default function Home() {
         if (
           device.product.name
             .toLocaleLowerCase()
-            .includes(searchValue.toLocaleLowerCase())
+            ?.includes(searchValue.toLocaleLowerCase())
         ) {
           return device.product.name;
         }
@@ -37,7 +37,7 @@ export default function Home() {
       }
     } else {
       const searchedProductLine = devicesData?.devices?.filter((product) =>
-        filterOptions.includes(product.line.name)
+        filterOptions?.includes(product.line.name)
       );
       setSearchResult(searchedProductLine);
 
