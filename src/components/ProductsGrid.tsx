@@ -4,12 +4,15 @@ import defaultTheme from "@/themes/defaultTheme";
 import Link from "next/link";
 import { GlobalState } from "@/context/GlobalState";
 import { useContext } from "react";
+import { Device } from "@/interfaces/devicesAPI.interface";
 
 const theme = defaultTheme();
 
 const ProductsGrid = () => {
   const globalState = useContext(GlobalState);
-  const { devicesData } = globalState;
+  const { searchResult } = globalState;
+
+  const devicesData = { devices: searchResult };
 
   return (
     <Wrapper>
@@ -17,7 +20,7 @@ const ProductsGrid = () => {
         <FirstColumn>{devicesData?.devices.length} devices</FirstColumn>
       </TitleRow>
       <ProductsWrapper>
-        {devicesData?.devices.map((device) => {
+        {devicesData?.devices.map((device: Device) => {
           return (
             <ProductContainer key={device.id}>
               <Link href={device.icon.id}>

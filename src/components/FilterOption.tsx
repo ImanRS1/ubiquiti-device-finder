@@ -14,18 +14,19 @@ const FilterOption = (props: FilterProps) => {
   const { filterOptions, setFilterOptions } = globalState;
 
   const handleClick = (productline: string) => {
-    if (filterOptions.includes(productline)) {
+    if (filterOptions?.includes(productline)) {
       setFilterOptions(
         filterOptions.filter((option) => option !== productline)
       );
       return;
     }
-    filterOptions.push(productline);
+
+    setFilterOptions(filterOptions?.concat(productline));
   };
 
   return (
     <FilterOptionWrapper>
-      {filterOptions.includes(props.productline) ? (
+      {filterOptions?.includes(props.productline) ? (
         <input
           type="checkbox"
           className="check_box"

@@ -7,8 +7,10 @@ interface GlobalState {
   filterWindow: boolean;
   setFilterWindow: Dispatch<SetStateAction<boolean>>;
   filterOptions: string[];
-  setFilterOptions: Dispatch<SetStateAction<Array<string>>>;
+  setFilterOptions: Dispatch<SetStateAction<string[]>>;
   devicesData: DevicesAPI;
+  searchResult: any;
+  setSearchResult: any;
   searchValue: string;
   setSearchValue: Dispatch<SetStateAction<string>>;
 }

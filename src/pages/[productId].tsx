@@ -127,6 +127,10 @@ const DataRow = styled.div`
   font-size: 14px;
   font-family: ${theme.font1};
   color: ${theme.black65};
+
+  div:nth-child(2) {
+    text-align: right;
+  }
 `;
 
 const Wrapper = styled.div`
