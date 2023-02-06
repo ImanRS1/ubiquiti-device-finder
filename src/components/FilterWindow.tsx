@@ -43,6 +43,10 @@ const FilterWindow = () => {
 const FilterOptionsContainer = styled.div`
   width: 208px;
   min-height: 192px;
+
+  ${theme.breakpoints.mobile} {
+    width: 135px;
+  }
 `;
 
 const FilterTitle = styled.div`
@@ -53,6 +57,10 @@ const FilterTitle = styled.div`
   font-weight: 700;
   color: ${theme.black85};
   font-size: 14px;
+
+  ${theme.breakpoints.mobile} {
+    width: 140px;
+  }
 `;
 
 const FilterHeader = styled.div`
@@ -92,6 +100,10 @@ const FilterContainer = styled.div`
   background-color: #ffffff;
   top: 0;
   right: 0;
+
+  ${theme.breakpoints.mobile} {
+    width: 156px;
+  }
 `;
 
 export default FilterWindow;
