@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import styled from "styled-components";
+import { motion, AnimatePresence } from "framer-motion";
 
 import defaultTheme from "@/themes/defaultTheme";
 import { GlobalState } from "@/context/GlobalState";
@@ -21,22 +22,31 @@ const FilterWindow = () => {
   );
 
   return (
-    <FilterContainer>
-      <FilterHeader>
-        <p className="filter-text">Filter</p>
-        <button
-          onClick={() => globalState.setFilterWindow(!globalState.filterWindow)}
-        >
-          <img src="./icons/close-icon.svg" alt="A close icon" />
-        </button>
-      </FilterHeader>
-      <FilterTitle>Product line</FilterTitle>
-      <FilterOptionsContainer>
-        {distinctProductLines?.map((productline) => (
-          <FilterOption productline={productline} key={productline} />
-        ))}
-      </FilterOptionsContainer>
-    </FilterContainer>
+    <AnimatePresence>
+      <FilterContainer
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
+      // key="test"
+      >
+        <FilterHeader>
+          <p className="filter-text">Filter</p>
+          <button
+            onClick={() =>
+              globalState.setFilterWindow(!globalState.filterWindow)
+            }
+          >
+            <img src="./icons/close-icon.svg" alt="A close icon" />
+          </button>
+        </FilterHeader>
+        <FilterTitle>Product line</FilterTitle>
+        <FilterOptionsContainer>
+          {distinctProductLines?.map((productline) => (
+            <FilterOption productline={productline} key={productline} />
+          ))}
+        </FilterOptionsContainer>
+      </FilterContainer>
+    </AnimatePresence>
   );
 };
 
@@ -94,12 +104,12 @@ const FilterHeader = styled.div`
   }
 `;
 
-const FilterContainer = styled.div`
+const FilterContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 256px;
-  min-height: 336px;
+  height: auto;
   padding-bottom: 10px;
   box-shadow: 0px 12px 48px rgba(0, 0, 0, 0.15);
   position: absolute;
@@ -109,6 +119,16 @@ const FilterContainer = styled.div`
 
   ${theme.breakpoints.mobile} {
     width: 156px;
+  }
+
+  animation: slideIn 1s;
+  @keyframes slideIn {
+    0% {
+      right: -300px;
+    }
+    100% {
+      right: 0px;
+    }
   }
 `;
 

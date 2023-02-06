@@ -28,22 +28,13 @@ const FilterOption = (props: FilterProps) => {
 
   return (
     <FilterOptionWrapper>
-      {filterOptions?.includes(props.productline) ? (
-        <input
-          type="checkbox"
-          className="check_box"
-          defaultChecked
-          id={props.productline}
-          onClick={() => handleClick(props.productline)}
-        />
-      ) : (
-        <input
-          type="checkbox"
-          className="check_box"
-          id={props.productline}
-          onClick={() => handleClick(props.productline)}
-        />
-      )}
+      <input
+        type="checkbox"
+        className="check_box"
+        defaultChecked={filterOptions?.includes(props.productline)}
+        id={props.productline}
+        onClick={() => handleClick(props.productline)}
+      />
 
       <label htmlFor={props.productline}>
         <div className="product-text">{props.productline}</div>
