@@ -89,5 +89,11 @@ const FilterOptionWrapper = styled.div`
     margin-left: 24px;
     width: 170px;
   }
+
+  ${theme.breakpoints.mobile} {
+    .product-text {
+      width: 110px;
+    }
+  }
 `;
 export default FilterOption;

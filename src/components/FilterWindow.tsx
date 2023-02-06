@@ -59,7 +59,7 @@ const FilterTitle = styled.div`
   font-size: 14px;
 
   ${theme.breakpoints.mobile} {
-    width: 140px;
+    width: 135px;
   }
 `;
 
@@ -85,6 +85,12 @@ const FilterHeader = styled.div`
     align-items: center;
     height: 100%;
     margin-right: 24px;
+  }
+
+  ${theme.breakpoints.mobile} {
+    .filter-text {
+      margin-left: 12px;
+    }
   }
 `;
 
