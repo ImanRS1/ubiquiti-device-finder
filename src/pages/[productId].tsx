@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import styled from "styled-components";
 import { useRouter } from "next/router";
@@ -12,6 +12,7 @@ import { Device } from "@/interfaces/devicesAPI.interface";
 const theme = defaultTheme();
 
 function ProductDetail() {
+  const [loaded, setLoaded] = useState(false);
   const router = useRouter();
   const { productId } = router.query;
   const globalState = useContext(GlobalState);
@@ -78,13 +79,20 @@ function ProductDetail() {
       <ProductNavbar product={device?.product?.name} />
       <Wrapper>
         <div className="img-container">
+          {loaded ? null : (
+            <img
+              src="./images/defaultImage257.png"
+              alt={device?.product?.name}
+            />
+          )}
           <img
+            style={loaded ? {} : { display: "none" }}
             src={`https://static.ui.com/fingerprint/ui/icons/${productId}_257x257.png`}
             alt={device?.product?.name}
+            onLoad={() => setLoaded(true)}
             onError={({ currentTarget }) => {
               currentTarget.onerror = null;
-              currentTarget.src =
-                "https://static.ui.com/fingerprint/ui/icons/98702c27-c680-4d23-bd75-155c7f07b013_257x257.png";
+              currentTarget.src = "./images/defaultImage257.png";
             }}
           />
         </div>

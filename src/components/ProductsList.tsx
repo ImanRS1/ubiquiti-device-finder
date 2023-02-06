@@ -40,8 +40,7 @@ const ProductsList = () => {
                 alt={device.product.name}
                 onError={({ currentTarget }) => {
                   currentTarget.onerror = null;
-                  currentTarget.src =
-                    "https://static.ui.com/fingerprint/ui/icons/98702c27-c680-4d23-bd75-155c7f07b013_25x25.png";
+                  currentTarget.src = "./images/defaultImage25.png";
                 }}
               />
             </FirstColumn>
@@ -51,8 +50,7 @@ const ProductsList = () => {
                 alt={device.product.name}
                 onError={({ currentTarget }) => {
                   currentTarget.onerror = null;
-                  currentTarget.src =
-                    "https://static.ui.com/fingerprint/ui/icons/98702c27-c680-4d23-bd75-155c7f07b013_25x25.png";
+                  currentTarget.src = "./images/defaultImage51.png";
                 }}
               />
             </FirstColumn>
