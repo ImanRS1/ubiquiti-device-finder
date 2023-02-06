@@ -61,6 +61,10 @@ const ProductContainer = styled.div`
   cursor: pointer;
   margin: 12px;
 
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
   .image-container {
     width: 232px;
     height: 124px;
