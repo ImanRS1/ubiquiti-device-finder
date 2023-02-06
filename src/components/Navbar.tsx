@@ -84,6 +84,7 @@ const Options = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
 
   .filter-button {
     color: ${theme.black45};
@@ -162,10 +163,10 @@ const SearchField = styled.div`
   }
 
   ${theme.breakpoints.smallMobile} {
-    margin-right: 10px;
+    margin-right: 30px;
 
     input[type="text"] {
-      width: 80px;
+      width: 50px;
     }
 
     button {
