@@ -41,6 +41,16 @@ const Wrapper = styled.div`
     font-size: 14px;
     color: ${theme.black45};
   }
+
+  ${theme.breakpoints.smallMobile} {
+    .back-button {
+      margin-left: 20px;
+    }
+
+    .text {
+      margin: 0 50px;
+    }
+  }
 `;
 
 export default ProductNavbar;

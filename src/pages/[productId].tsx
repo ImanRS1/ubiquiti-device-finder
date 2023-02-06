@@ -80,7 +80,7 @@ function ProductDetail() {
         <div className="img-container">
           <img
             src={`https://static.ui.com/fingerprint/ui/icons/${productId}_257x257.png`}
-            alt={"productName"}
+            alt={device?.product?.name}
             onError={({ currentTarget }) => {
               currentTarget.onerror = null;
               currentTarget.src =
@@ -143,6 +143,17 @@ const DataRow = styled.div`
   div:nth-child(2) {
     text-align: right;
   }
+
+  ${theme.breakpoints.smallMobile} {
+    min-height: 49px;
+    align-items: flex-start;
+    border-bottom: none;
+    border-top: 1px solid ${theme.grey3};
+
+    div:nth-child(2) {
+      margin-left: 20px;
+    }
+  }
 `;
 
 const Wrapper = styled.div`
@@ -160,6 +171,25 @@ const Wrapper = styled.div`
     height: 215px;
     width: 400px;
     margin-left: 32px;
+  }
+
+  ${theme.breakpoints.mobile} {
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto;
+    height: auto;
+    width: 90vw;
+
+    .product-container {
+      margin-left: 0;
+    }
+  }
+
+  ${theme.breakpoints.smallMobile} {
+    .product-container {
+      width: 100%;
+      margin-left: 0;
+    }
   }
 `;
 
