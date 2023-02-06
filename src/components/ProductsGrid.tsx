@@ -90,6 +90,10 @@ const ProductsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 0 -12px 0 -12px;
+
+  ${theme.breakpoints.productsViewBreak} {
+    justify-content: center;
+  }
 `;
 
 const FirstColumn = styled.div`
@@ -114,6 +118,14 @@ const Wrapper = styled.div`
 
   a {
     text-decoration: none;
+  }
+
+  ${theme.breakpoints.productsViewBreak} {
+    width: 95vw;
+  }
+
+  ${theme.breakpoints.mobile} {
+    width: 90vw;
   }
 `;
 
