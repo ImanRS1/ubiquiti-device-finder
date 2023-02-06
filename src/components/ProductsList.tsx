@@ -91,7 +91,6 @@ const ThirdColumn = styled.div`
   }
 
   ${theme.breakpoints.smallMobile} {
-    font-size: 12px;
     flex-grow: 0;
     width: 150px;
   }
@@ -118,7 +117,6 @@ const SecondColumn = styled.div`
 
   ${theme.breakpoints.smallMobile} {
     flex-grow: 1;
-    font-size: 12px;
 
     .title-row {
       white-space: nowrap;
@@ -147,7 +145,6 @@ const FirstColumn = styled.div`
 
   ${theme.breakpoints.smallMobile} {
     margin-right: 50px;
-    font-size: 12px;
   }
 `;
 
