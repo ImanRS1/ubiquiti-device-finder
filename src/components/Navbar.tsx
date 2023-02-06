@@ -152,6 +152,28 @@ const SearchField = styled.div`
       color: ${theme.grey2};
     }
   }
+
+  ${theme.breakpoints.tablet} {
+    margin-left: 15px;
+  }
+
+  ${theme.breakpoints.mobile} {
+    margin-left: 10px;
+  }
+
+  ${theme.breakpoints.smallMobile} {
+    margin-right: 10px;
+
+    input[type="text"] {
+      width: 80px;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      padding: 6px 6px;
+    }
+  }
 `;
 
 const Wrapper = styled.div`
