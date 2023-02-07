@@ -79,7 +79,7 @@ function ProductDetail() {
         <div className="img-container">
           {loaded ? null : (
             <img
-              src="./images/defaultImage257.png"
+              src="./images/defaultImage51.png"
               alt={device?.product?.name}
             />
           )}
@@ -90,7 +90,7 @@ function ProductDetail() {
             onLoad={() => setLoaded(true)}
             onError={({ currentTarget }) => {
               currentTarget.onerror = null;
-              currentTarget.src = "./images/defaultImage257.png";
+              currentTarget.src = "./images/defaultImage51.png";
             }}
           />
         </div>
@@ -168,7 +168,10 @@ const Wrapper = styled.div`
   display: flex;
 
   .img-container {
-    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 256px;
     width: 256px;
   }
 
