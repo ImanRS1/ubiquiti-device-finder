@@ -93,7 +93,7 @@ const ProductsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 0 -12px 0 -12px;
-  min-height: 300px;
+  min-height: 600px;
 
   ${theme.breakpoints.productsViewBreak} {
     justify-content: center;
