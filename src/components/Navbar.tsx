@@ -16,6 +16,16 @@ const Navbar = () => {
     globalState.setListView(active);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      globalState.setSearchValue(
+        (event as unknown as React.ChangeEvent<HTMLInputElement>).target.value
+      );
+      (event as unknown as React.ChangeEvent<HTMLInputElement>).target.value =
+        "";
+    }
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     globalState.setSearchValue(e.target.value);
   };
@@ -38,6 +48,7 @@ const Navbar = () => {
             onChange={handleChange}
             className="search-field"
             value={globalState.searchValue}
+            onKeyDown={handleKeyDown}
           />
           <button onClick={handleReset}>
             <img src="./icons/close-icon.svg" alt="A reset icon" />
