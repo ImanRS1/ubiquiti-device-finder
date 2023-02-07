@@ -55,11 +55,11 @@ const FilterWindow = () => {
 };
 
 const FilterOptionsContainer = styled.div`
-  width: 208px;
+  width: 256px;
   min-height: 192px;
 
   ${theme.breakpoints.mobile} {
-    width: 135px;
+    width: 156px;
   }
 `;
 
@@ -74,6 +74,7 @@ const FilterTitle = styled.div`
 
   ${theme.breakpoints.mobile} {
     width: 135px;
+    margin-left: 5px;
   }
 `;
 

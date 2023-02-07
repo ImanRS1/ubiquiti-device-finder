@@ -49,6 +49,11 @@ const FilterOptionWrapper = styled.div`
   display: flex;
   align-items: center;
 
+  &:hover {
+    background-color: ${theme.grey5};
+    cursor: pointer;
+  }
+
   .check_box {
     display: none;
   }
@@ -60,6 +65,7 @@ const FilterOptionWrapper = styled.div`
     display: inline-block;
     padding: 0 0 0 0px;
     cursor: pointer;
+    margin-left: 23.5px;
   }
 
   .check_box:checked + label {
@@ -84,6 +90,10 @@ const FilterOptionWrapper = styled.div`
   ${theme.breakpoints.mobile} {
     .product-text {
       width: 110px;
+    }
+
+    .check_box + label {
+      margin-left: 13.5px;
     }
   }
 `;
