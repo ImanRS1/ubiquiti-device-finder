@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { GlobalState } from "@/context/GlobalState";
 import { Device } from "@/interfaces/devicesAPI.interface";
-import FetchDevicesData from "@/utils/FetchDeviceData";
+import FetchDevicesData from "@/utils/fetchDeviceData";
 
 import type { AppProps } from "next/app";
 
