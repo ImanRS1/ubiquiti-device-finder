@@ -71,7 +71,7 @@ const Navbar = () => {
         >
           Filter
         </button>
-        {globalState.filterWindow ? <FilterWindow /> : ""}
+        <FilterWindow />
       </Options>
     </Wrapper>
   );
@@ -120,6 +120,7 @@ const SearchField = styled.div`
 
   .search-button {
     padding-right: 2px;
+    padding-left: 8px;
     display: flex;
     align-items: center;
   }

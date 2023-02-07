@@ -23,29 +23,33 @@ const FilterWindow = () => {
 
   return (
     <AnimatePresence>
-      <FilterContainer
-      // initial={{ opacity: 0 }}
-      // animate={{ opacity: 1 }}
-      // exit={{ opacity: 0 }}
-      // key="test"
-      >
-        <FilterHeader>
-          <p className="filter-text">Filter</p>
-          <button
-            onClick={() =>
-              globalState.setFilterWindow(!globalState.filterWindow)
-            }
-          >
-            <img src="./icons/close-icon.svg" alt="A close icon" />
-          </button>
-        </FilterHeader>
-        <FilterTitle>Product line</FilterTitle>
-        <FilterOptionsContainer>
-          {distinctProductLines?.map((productline) => (
-            <FilterOption productline={productline} key={productline} />
-          ))}
-        </FilterOptionsContainer>
-      </FilterContainer>
+      {globalState.filterWindow === false ? (
+        ""
+      ) : (
+        <FilterContainer
+          initial={{ x: 300 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          exit={{ x: 300, transition: { duration: 0.5 } }}
+        >
+          <FilterHeader>
+            <p className="filter-text">Filter</p>
+            <button
+              onClick={() => {
+                globalState.setFilterWindow(!globalState.filterWindow);
+              }}
+            >
+              <img src="./icons/close-icon.svg" alt="Close button" />
+            </button>
+          </FilterHeader>
+          <FilterTitle>Product line</FilterTitle>
+          <FilterOptionsContainer>
+            {distinctProductLines?.map((productline) => (
+              <FilterOption productline={productline} key={productline} />
+            ))}
+          </FilterOptionsContainer>
+        </FilterContainer>
+      )}
     </AnimatePresence>
   );
 };
@@ -101,6 +105,10 @@ const FilterHeader = styled.div`
     .filter-text {
       margin-left: 12px;
     }
+
+    button {
+      margin-right: 14px;
+    }
   }
 `;
 
@@ -119,16 +127,6 @@ const FilterContainer = styled(motion.div)`
 
   ${theme.breakpoints.mobile} {
     width: 156px;
-  }
-
-  animation: slideIn 1s;
-  @keyframes slideIn {
-    0% {
-      right: -300px;
-    }
-    100% {
-      right: 0px;
-    }
   }
 `;
 
