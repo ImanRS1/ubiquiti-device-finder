@@ -1,10 +1,10 @@
 import { useContext, useEffect } from "react";
 
+import { GlobalState } from "@/context/GlobalState";
 import Navbar from "@/components/Navbar";
 import ProductsList from "@/components/ProductsList";
 import ProductsGrid from "@/components/ProductsGrid";
 import Layout from "@/components/Layout";
-import { GlobalState } from "@/context/GlobalState";
 import filterOnSearchInput from "@/utils/filterOnSearchInput";
 import filterOnFilterOptions from "@/utils/filterOnFilterOptions";
 

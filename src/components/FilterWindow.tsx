@@ -1,10 +1,10 @@
 import { useContext } from "react";
 
-import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
+import styled from "styled-components";
 
-import defaultTheme from "@/themes/defaultTheme";
 import { GlobalState } from "@/context/GlobalState";
+import defaultTheme from "@/themes/defaultTheme";
 
 import FilterOption from "./FilterOption";
 

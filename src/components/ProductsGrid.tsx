@@ -3,9 +3,9 @@ import { useContext } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
+import { Device } from "@/interfaces/devicesAPI.interface";
 import { GlobalState } from "@/context/GlobalState";
 import defaultTheme from "@/themes/defaultTheme";
-import { Device } from "@/interfaces/devicesAPI.interface";
 
 const theme = defaultTheme();
 

@@ -3,11 +3,11 @@ import { useContext, useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
+import { GlobalState } from "@/context/GlobalState";
+import { Device } from "@/interfaces/devicesAPI.interface";
 import Layout from "@/components/Layout";
 import ProductNavbar from "@/components/ProductNavbar";
 import defaultTheme from "@/themes/defaultTheme";
-import { GlobalState } from "@/context/GlobalState";
-import { Device } from "@/interfaces/devicesAPI.interface";
 
 const theme = defaultTheme();
 
@@ -112,15 +112,13 @@ function ProductDetail() {
                 <div>{device.product?.name}</div>
               </DataRow>
 
-              {device.shortnames?.[0] ? (
+              {device.shortnames?.[0] && (
                 <DataRow>
                   <div>Short names</div>
                   <div>
                     {device.shortnames.map((shortname) => `${shortname} `)}
                   </div>
                 </DataRow>
-              ) : (
-                ""
               )}
 
               {device?.unifi && renderUnifiSpecificRows(device)}
@@ -171,8 +169,8 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 256px;
-    width: 256px;
+    height: 257px;
+    width: 257px;
   }
 
   .product-container {
