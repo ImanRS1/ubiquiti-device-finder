@@ -5,7 +5,8 @@ import ProductsList from "@/components/ProductsList";
 import ProductsGrid from "@/components/ProductsGrid";
 import Layout from "@/components/Layout";
 import { GlobalState } from "@/context/GlobalState";
-import { Device } from "@/interfaces/devicesAPI.interface";
+import filterOnSearchInput from "@/utils/filterOnSearchInput";
+import filterOnFilterOptions from "@/utils/filterOnFilterOptions";
 
 export default function Home() {
   const globalState = useContext(GlobalState);
@@ -18,31 +19,24 @@ export default function Home() {
   const searchValuesGiven = (searchValues: string) => searchValues.length > 0;
 
   useEffect(() => {
-    const filterDevicesOnSearchInput = (productData: Device[]) =>
-      productData?.filter((device) => {
-        if (
-          device.product.name
-            .toLocaleLowerCase()
-            ?.includes(searchValue.toLocaleLowerCase())
-        ) {
-          return device.product.name;
-        }
-      });
-
     if (noFilterOptionsPicked(filterOptions)) {
       setSearchResult(devicesData?.devices);
 
       if (searchValuesGiven(searchValue)) {
-        setSearchResult(filterDevicesOnSearchInput(devicesData?.devices));
+        setSearchResult(filterOnSearchInput(devicesData?.devices, searchValue));
       }
     } else {
-      const searchedProductLine = devicesData?.devices?.filter((product) =>
-        filterOptions?.includes(product.line.name)
+      setSearchResult(
+        filterOnFilterOptions(devicesData?.devices, filterOptions)
       );
-      setSearchResult(searchedProductLine);
 
       if (searchValuesGiven(searchValue)) {
-        setSearchResult(filterDevicesOnSearchInput(searchedProductLine));
+        setSearchResult(
+          filterOnSearchInput(
+            filterOnFilterOptions(devicesData?.devices, filterOptions),
+            searchValue
+          )
+        );
       }
     }
   }, [searchValue, filterOptions, devicesData, setSearchResult]);
